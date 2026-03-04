@@ -1,3 +1,5 @@
+STILL IN PRE RELEASE MODE
+
 VIDEO DEMO
 [![VerbVerb screenshot](https://github.com/amateurtools/midiverb_emulator_AT/raw/main/verbverb.jpg)](https://www.patreon.com/posts/verbverb-is-of-152215274?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
 
