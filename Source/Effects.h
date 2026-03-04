@@ -1,0 +1,41 @@
+#pragma once
+
+#include <cstdint>
+
+// Include the generated effects from the parent directory
+#include "../MIDIVERB_DECOMPILED/decompiled-midiverb.h"
+#include "../MIDIVERB_DECOMPILED/decompiled-midifex.h"
+#include "../MIDIVERB_DECOMPILED/decompiled-midiverb2.h"
+
+// Effect names
+static const char* names_midiverb[] = {
+#include "../MIDIVERB_DECOMPILED/names-midiverb.h"
+};
+
+static const char* names_midifex[] = {
+#include "../MIDIVERB_DECOMPILED/names-midifex.h"
+};
+
+static const char* names_midiverb2[] = {
+#include "../MIDIVERB_DECOMPILED/names-midiverb2.h"
+};
+
+// Effect function pointer type (with LFO parameters for MIDIVerb 2 compatibility)
+using EffectFn = void (*)(int16_t input, int16_t *out_left, int16_t *out_right, int16_t *DRAM, int ptr, uint32_t lfo1_value, uint32_t lfo2_value);
+
+// Device info structure
+struct DeviceInfo {
+    const char* name;
+    int numEffects;     // Number of effects
+    int displayOffset;  // Added to 0-based index for display (1 for MIDIVerb/MidiFex, 0 for MIDIVerb 2)
+    const char** effectNames;
+    EffectFn* effects;
+};
+
+static const DeviceInfo devices[] = {
+    { "MIDIVerb",   64,  1, names_midiverb,  midiverb_effects },
+    { "MidiFex",    64,  1, names_midifex,   midifex_effects },
+    { "MIDIVerb 2", 100, 0, names_midiverb2, midiverb2_effects },
+};
+
+static constexpr int NUM_DEVICES = 3;
